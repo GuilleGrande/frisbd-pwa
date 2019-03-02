@@ -9,6 +9,12 @@ import { MaterialModule } from './material.module';
 import { LoginComponent } from './components/welcome-card/login/login.component';
 import { RegisterComponent } from './components/welcome-card/register/register.component';
 import { WelcomeCardComponent } from './components/welcome-card/welcome-card.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from 'src/environments/environment';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,9 +28,17 @@ import { WelcomeCardComponent } from './components/welcome-card/welcome-card.com
     BrowserModule,
     MaterialModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: FirestoreSettingsToken, useValue: {} }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

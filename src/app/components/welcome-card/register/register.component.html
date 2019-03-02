@@ -1,31 +1,60 @@
 <div class="container" style="margin-top:1em;">
-    <form class="form-group">
-      <div class="row justify-content-center">
+    <form
+        class="form-group"
+        [formGroup]="registerForm"
+        (ngSubmit)="register()">
+        <div class="row justify-content-center">
           <mat-form-field appearance="outline">
               <mat-label>Name</mat-label>
-              <input matInput placeholder="Enter full name" type="text">
+              <input 
+                matInput
+                placeholder="Enter full name"
+                type="text"
+                [ngClass]="{ 'is-invalid': registerForm.controls['name'].errors && (registerForm.controls['name'].dirty || registerForm.controls['name'].touched) }"
+                required>
           </mat-form-field>
       </div>
       <div class="row justify-content-center">
           <mat-form-field appearance="outline">
               <mat-label>Email</mat-label>
-              <input matInput placeholder="Enter email" type="email">
+              <input 
+                matInput
+                placeholder="Enter email"
+                type="email"
+                [formControl]="email"
+                required>
           </mat-form-field>
       </div>
       <div class="row justify-content-center">
           <mat-form-field appearance="outline">
               <mat-label>Password</mat-label>
-              <input matInput placeholder="Enter password" type="password">
+              <input 
+                matInput
+                placeholder="Enter password"
+                type="password"
+                [formControl]="password"
+                required>
           </mat-form-field>
       </div>
       <div class="row justify-content-center">
           <mat-form-field appearance="outline">
               <mat-label>Confirm password</mat-label>
-              <input matInput placeholder="Confirm password" type="password">
+              <input 
+                matInput
+                placeholder="Confirm password"
+                type="password"
+                [formControl]="password"
+                required>
           </mat-form-field>
       </div>
       <div class="row justify-content-center">
-          <button mat-flat-button color="primary" style="width: 100%;">Register</button>
+          <button 
+            mat-flat-button
+            color="primary"
+            style="width: 100%;"
+            type="submit">
+            Register
+        </button>
       </div>
     </form>
   </div>
